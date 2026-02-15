@@ -1,5 +1,6 @@
 package com.omi.SeXurityPOC.controller;
 
+import com.omi.SeXurityPOC.dto.AuthResponseDto;
 import com.omi.SeXurityPOC.service.AuthService;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +22,19 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/sign-in")
-    public ResponseEntity<?> signin(Authentication authentication , HttpServletResponse response){
+    public ResponseEntity<AuthResponseDto> signin(Authentication authentication , HttpServletResponse response){
         return new ResponseEntity<>(authService.getJwtTokensAfterAuthentication(authentication , response) , HttpStatus.OK);
     }
 
     @PreAuthorize("hasAuthority('SCOPE_REFRESH_TOKEN')")
     @PostMapping ("/refresh-token")
-    public ResponseEntity<?> getAccessToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationHeader){
+    public ResponseEntity<Object> getAccessToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String authorizationHeader){
         return ResponseEntity.ok(authService.getAccessTokenUsingRefreshToken(authorizationHeader));
+    }
+
+    @PostMapping("/sign-up")
+    public ResponseEntity<?> registerUser (){
+
     }
 
 }
