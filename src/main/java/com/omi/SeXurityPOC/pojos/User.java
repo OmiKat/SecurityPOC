@@ -34,8 +34,7 @@ public class User {
     private String mobileNumber;
 
     @Column(name = "ROLES" , nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Roles roles;
+    private String roles;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<RefreshTokenEntity> refreshTokens;

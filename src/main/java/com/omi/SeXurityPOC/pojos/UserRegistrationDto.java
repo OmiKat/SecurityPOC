@@ -18,5 +18,5 @@ public record UserRegistrationDto(
         String userPassword,
 
         @NotEmpty(message = "Roles cannot be empty")
-        Roles userRole
+        String userRole
 ) { }

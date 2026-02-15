@@ -25,21 +25,21 @@ public class CmdLineRunner implements CommandLineRunner {
         admin.setUserName("admin");
         admin.setPassword(passwordEncoder.encode("password"));
         admin.setEmail("admin@admin.com");
-        admin.setRoles(Roles.ADMIN);
+        admin.setRoles("ADMIN");
         admin.setMobileNumber("123");
 
         User manager = new User();
         manager.setUserName("manager");
         manager.setPassword(passwordEncoder.encode("password"));
         manager.setEmail("manager@manager.com");
-        manager.setRoles(Roles.MANAGER);
+        manager.setRoles("MANAGER");
         manager.setMobileNumber("123");
 
         User user = new User();
         user.setUserName("user");
         user.setPassword(passwordEncoder.encode("password"));
         user.setEmail("user@user.com");
-        user.setRoles(Roles.USER);
+        user.setRoles("USER");
         user.setMobileNumber("123");
 
         userRepo.saveAll(List.of(user,admin,manager));

@@ -16,7 +16,7 @@ public class UserConfig implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(() -> user.getRoles().name());
+        return List.of(user::getRoles);
     }
 
     @Override

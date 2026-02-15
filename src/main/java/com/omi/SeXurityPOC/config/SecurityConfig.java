@@ -127,6 +127,17 @@ public class SecurityConfig {
                 })
                 .build();
     }
+    @Order(5)
+    @Bean
+    public SecurityFilterChain registerSecurityFilterChain(HttpSecurity httpSecurity) throws Exception{
+        return httpSecurity
+                .securityMatcher(("/sign-up/**"))
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(auth ->
+                        auth.anyRequest().permitAll())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .build();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){

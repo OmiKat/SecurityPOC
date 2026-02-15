@@ -60,9 +60,6 @@ public class JwtTokenGenerator {
         return jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
 
-
-
-
     private static String getRolesOfUser(Authentication authentication) {
         return authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
