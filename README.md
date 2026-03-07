@@ -1,4 +1,4 @@
-# SeXurityPOC
+# SecurityPOC
 
 A **Java authentication proof-of-concept** built with Spring Boot 4.0. It demonstrates JWT-based access/refresh token flow, role-based API security, and user registration with a PostgreSQL backend.
 
